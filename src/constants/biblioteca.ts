@@ -1,4 +1,4 @@
-export const NOMBRE_ALUMNO = 'Alfonso Zagaña';
+export const NOMBRE_ALUMNO = 'Alan Ybars';
 
 export const CREDENCIALES_PERSONAL = {
   usuario: 'biblioteca',
