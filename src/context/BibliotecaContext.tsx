@@ -1,3 +1,4 @@
+import * as SplashScreen from 'expo-splash-screen';
 import { createContext, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 
 import {
@@ -13,9 +14,9 @@ import { Cola } from '../estructuras/Cola';
 import { Pila } from '../estructuras/Pila';
 import { cargarEstado, guardarEstado } from '../lib/almacenamiento';
 import {
-  calcularDisponibles,
   colasAListas,
   colasDesdeListas,
+  decidirReserva,
   sincronizarPrestamo,
 } from '../lib/biblioteca';
 import { buscarLibroPorIsbn, obtenerTitulo } from '../lib/catalogo';
@@ -50,7 +51,7 @@ export type ValorBiblioteca = {
 export const BibliotecaContext = createContext<ValorBiblioteca | null>(null);
 
 type Props = {
-  children: ReactNode;
+  children: (valor: ValorBiblioteca) => ReactNode;
 };
 
 function crearId(): string {
@@ -98,6 +99,12 @@ export function BibliotecaProvider({ children }: Props) {
       activo = false;
     };
   }, []);
+
+  useEffect(() => {
+    if (listo) {
+      SplashScreen.hideAsync();
+    }
+  }, [listo]);
 
   useEffect(() => {
     if (!listo) {
@@ -156,13 +163,11 @@ export function BibliotecaProvider({ children }: Props) {
       if (!libro) {
         return { tipo: 'inexistente' };
       }
-      const cola = colas[isbn] ?? new Cola<string>();
-      const yaPrestado = prestamos.some((prestamo) => prestamo.isbn === isbn);
-      const yaEnEspera = cola.aArray().includes(NOMBRE_ALUMNO);
-      if (yaPrestado || yaEnEspera) {
+      const decision = decidirReserva(libro, prestamos, colas[isbn], NOMBRE_ALUMNO);
+      if (decision === 'repetida') {
         return { tipo: 'repetida' };
       }
-      if (calcularDisponibles(libro, prestamos) > 0 && cola.estaVacia()) {
+      if (decision === 'prestamo') {
         const vence = sumarDias(new Date(), DIAS_PRESTAMO).toISOString();
         setPrestamos((anteriores) => [
           ...anteriores,
@@ -170,6 +175,7 @@ export function BibliotecaProvider({ children }: Props) {
         ]);
         return { tipo: 'prestamo', vence };
       }
+      const cola = colas[isbn] ?? new Cola<string>();
       const nueva = new Cola<string>(cola.aArray());
       nueva.encolar(NOMBRE_ALUMNO);
       setColas((anteriores) => ({ ...anteriores, [isbn]: nueva }));
@@ -333,5 +339,9 @@ export function BibliotecaProvider({ children }: Props) {
     ],
   );
 
-  return <BibliotecaContext.Provider value={valor}>{children}</BibliotecaContext.Provider>;
+  if (!listo) {
+    return null;
+  }
+
+  return <BibliotecaContext.Provider value={valor}>{children(valor)}</BibliotecaContext.Provider>;
 }

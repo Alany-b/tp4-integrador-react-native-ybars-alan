@@ -10,6 +10,25 @@ export function calcularDisponibles(libro: Libro, prestamos: Prestamo[]): number
   return Math.max(0, libro.ejemplares - delEstante);
 }
 
+export type DecisionReserva = 'prestamo' | 'espera' | 'repetida';
+
+export function decidirReserva(
+  libro: Libro,
+  prestamos: Prestamo[],
+  cola: Cola<string> | undefined,
+  nombre: string,
+): DecisionReserva {
+  const yaPrestado = prestamos.some((prestamo) => prestamo.isbn === libro.isbn);
+  if (yaPrestado || posicionEnCola(cola, nombre) > 0) {
+    return 'repetida';
+  }
+  const nadieEspera = !cola || cola.estaVacia();
+  if (calcularDisponibles(libro, prestamos) > 0 && nadieEspera) {
+    return 'prestamo';
+  }
+  return 'espera';
+}
+
 export function posicionEnCola(cola: Cola<string> | undefined, nombre: string): number {
   if (!cola) {
     return 0;
