@@ -16,8 +16,8 @@ export const LIBROS: Libro[] = [
   { isbn: '9789508955593', titulo: 'Toda Mafalda', autor: 'Quino', anio: 1993, ejemplares: 2 },
   { isbn: '9789879711477', titulo: 'Los siete locos', autor: 'Roberto Arlt', anio: 1929, ejemplares: 1 },
   { isbn: '9789500497466', titulo: 'La invención de Morel', autor: 'Adolfo Bioy Casares', anio: 1940, ejemplares: 0 },
-  { isbn: '9780132350884', titulo: 'Clean Code', autor: 'Robert C. Martin', anio: 2008, ejemplares: 1 },
-  { isbn: '9781593279509', titulo: 'Eloquent JavaScript', autor: 'Marijn Haverbeke', anio: 2018, ejemplares: 1 },
+  { isbn: '9788499890944', titulo: '1984', autor: 'George Orwell', anio: 1949, ejemplares: 2 },
+  { isbn: '9788420674209', titulo: 'El extranjero', autor: 'Albert Camus', anio: 1942, ejemplares: 1 },
 ];
 
 export const ESPERAS_INICIALES: Record<string, string[]> = {

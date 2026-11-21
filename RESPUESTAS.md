@@ -336,7 +336,7 @@ c) En Expo Go no pude verificar del todo:
 
 - El texto de propósito de la cámara. Expo Go muestra su propio texto, porque el diálogo usa el Info.plist de Expo Go y no el de mi app.
 - `blockedPermissions` y `recordAudioAndroid`. En Expo Go se usa el manifiesto de Expo Go, que declara muchos permisos.
-- El canal "prestamos" en Android. Expo Go tiene sus propios canales y limitaciones con las notificaciones.
+- El canal "prestamos" en Android. Expo Go tiene sus propios canales y limitaciones con las notificaciones. Con las capturas en el teléfono apareció un detalle concreto: en Expo Go el canal se registra con el identificador de la experiencia (`@anonymous/biblioteca-ipf-…`), así que `setNotificationChannelAsync('prestamos')` falla al devolver el canal recién creado porque `getNotificationChannel` no lo encuentra con ese nombre. La app tolera ese fallo en `crearCanalPrestamos` y el recordatorio se programa igual.
 
 Lo verificaría de dos formas:
 

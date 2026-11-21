@@ -19,11 +19,18 @@ export async function crearCanalPrestamos(): Promise<void> {
   if (Platform.OS !== 'android') {
     return;
   }
-  await Notifications.setNotificationChannelAsync(CANAL_PRESTAMOS, {
-    name: 'Préstamos',
-    description: 'Recordatorios de devolución y libros listos para retirar',
-    importance: AndroidImportance.HIGH,
-  });
+  try {
+    await Notifications.setNotificationChannelAsync(CANAL_PRESTAMOS, {
+      name: 'Préstamos',
+      description: 'Recordatorios de devolución y libros listos para retirar',
+      importance: AndroidImportance.HIGH,
+    });
+  } catch {
+    // En Expo Go los canales se registran con el identificador de la experiencia
+    // y la respuesta nativa de este pedido falla al serializarse. El canal queda
+    // creado igual, así que no se corta el resto del flujo.
+    return;
+  }
 }
 
 export async function consultarPermisoNotificaciones(): Promise<Notifications.NotificationPermissionsStatus> {
