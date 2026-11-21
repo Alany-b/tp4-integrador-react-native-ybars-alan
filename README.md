@@ -142,7 +142,7 @@ El catálogo tiene 17 libros en `src/data/libros.ts`. El Aleph y El túnel empie
 
 ## Capturas
 
-Están en la carpeta `capturas`. Las capturas 01 a 14 se sacaron en la versión web de la app, con tamaño de pantalla de iPhone. Las capturas 15 a 22 se sacaron en un iPhone 13 con Expo Go.
+Están en la carpeta `capturas`. Las capturas 01 a 14 se sacaron en la versión web de la app, con tamaño de pantalla de iPhone. Las capturas 15 a 22 se sacaron en un teléfono Android (moto e22, Android 12) con Expo Go.
 
 | Archivo | Pantalla |
 |---|---|
@@ -163,13 +163,15 @@ Están en la carpeta `capturas`. Las capturas 01 a 14 se sacaron en la versión 
 | `15-escaner-cargando.png` | Escáner revisando el permiso de la cámara (fotograma del video de pantalla) |
 | `16-escaner-preguntable.png` | Escáner con el texto del beneficio y el botón "Usar la cámara" |
 | `17-permiso-camara-previa.png` | Pantalla previa del permiso de cámara, antes del diálogo del sistema |
-| `18-dialogo-sistema-camara.png` | Diálogo de iOS pidiendo la cámara (el texto es el de Expo Go) |
+| `18-dialogo-sistema-camara.png` | Diálogo del sistema pidiendo la cámara (el texto es el de Expo Go) |
 | `19-escaner-bloqueado.png` | Cámara bloqueada, con "Abrir Ajustes" y el ingreso manual del ISBN |
 | `20-escaner-concedido.png` | Escáner con la cámara activa leyendo un código de barras |
 | `21-permiso-notificaciones-previa.png` | Pantalla previa del permiso de notificaciones |
 | `22-notificacion-recibida.png` | Banner "Recordatorio de devolución" en la pantalla de inicio |
 
 Las capturas 15 a 22 dependen de los permisos de Expo Go, no de la app. Por eso se sacaron en este orden: primero la negativa de la cámara, después el permiso concedido desde Ajustes, y al final el de notificaciones.
+
+En Android hay dos diferencias con iOS que se ven en estas capturas. La negativa de la cámara no es definitiva la primera vez: el diálogo vuelve a aparecer y recién con la segunda negativa la pantalla pasa a "La cámara está bloqueada". Y en Android 12 el permiso de notificaciones no tiene diálogo, porque se concede al instalar la app; la pantalla previa de la captura 21 se abrió por el deep link `/permisos/notificaciones`.
 
 ## Salida de lint y tipos
 
