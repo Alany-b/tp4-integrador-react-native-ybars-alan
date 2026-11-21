@@ -1,4 +1,5 @@
 import { router, useLocalSearchParams } from 'expo-router';
+import { useState } from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
 
 import { Boton } from '../../components/Boton';
@@ -36,6 +37,7 @@ export default function PantallaReservar() {
   const estilos = useEstilos(crearEstilos);
   const { isbn } = useLocalSearchParams<{ isbn: string }>();
   const { prestamos, colas, reservar } = useBiblioteca();
+  const [confirmada, setConfirmada] = useState(false);
 
   const isbnTexto = typeof isbn === 'string' ? isbn : '';
   const libro = esIsbnValido(isbnTexto) ? buscarLibroPorIsbn(isbnTexto) : undefined;
@@ -57,8 +59,17 @@ export default function PantallaReservar() {
   }
 
   function confirmar() {
+    setConfirmada(true);
     reservar(isbnTexto);
     irAMisReservas();
+  }
+
+  if (confirmada) {
+    return (
+      <ScrollView style={estilos.pantalla} contentContainerStyle={estilos.contenido}>
+        <Text style={estilos.texto}>Reserva confirmada.</Text>
+      </ScrollView>
+    );
   }
 
   if (decision === 'repetida') {
