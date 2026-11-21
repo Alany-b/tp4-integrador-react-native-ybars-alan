@@ -140,6 +140,29 @@ El catálogo tiene 17 libros en `src/data/libros.ts`. El Aleph y El túnel empie
 - Debounce de 300 ms en el buscador.
 - Modo oscuro con `useColorScheme` y los colores de `tema.ts`.
 
+## Capturas
+
+Están en la carpeta `capturas`. Las de esta lista se sacaron en la versión web de la app, con tamaño de pantalla de iPhone.
+
+| Archivo | Pantalla |
+|---|---|
+| `01-catalogo-cargando.png` | Catálogo cargando |
+| `02-catalogo-error.png` | Catálogo con error y botón Reintentar |
+| `03-catalogo-con-datos.png` | Catálogo con datos |
+| `04-buscador.png` | Buscador con la búsqueda "borges" |
+| `05-detalle-isbn-invalido.png` | Detalle con un ISBN mal formado |
+| `06-detalle-inexistente.png` | Detalle de un ISBN que no está en el catálogo |
+| `07-detalle-con-ejemplares.png` | Detalle de un libro con ejemplares |
+| `08-reserva-con-ejemplares.png` | Confirmación de préstamo |
+| `09-mis-reservas-prestamo.png` | Mis reservas con un préstamo |
+| `10-reserva-sin-ejemplares.png` | Confirmación de ingreso a la lista de espera |
+| `11-mis-reservas-espera.png` | Mis reservas con la posición en la lista |
+| `12-mostrador-antes.png` | Mostrador antes de entregar |
+| `13-mostrador-despues.png` | Mostrador después de entregar al siguiente |
+| `14-pantalla-404.png` | Pantalla 404 con la URL inexistente |
+
+Las capturas del escáner en sus cuatro estados y de la notificación recibida se sacaron en el teléfono con Expo Go.
+
 ## Salida de lint y tipos
 
 ```
