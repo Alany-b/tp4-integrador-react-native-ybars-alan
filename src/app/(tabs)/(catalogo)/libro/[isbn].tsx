@@ -95,7 +95,7 @@ export default function PantallaDetalle() {
   const yaReservado = loTengo || miPosicion > 0;
 
   function irAReservar() {
-    router.push({ pathname: '/reservar/[isbn]', params: { isbn: libro?.isbn ?? '' } });
+    router.push({ pathname: '/reservar/[isbn]', params: { isbn: isbnTexto } });
   }
 
   return (
