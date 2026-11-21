@@ -1,19 +1,20 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Tabs } from 'expo-router/js-tabs';
+import type { ColorValue } from 'react-native';
 
 import { useTema } from '../../hooks/useTema';
 
 type PropsIcono = {
-  color: string;
+  color: ColorValue;
   size: number;
 };
 
 function iconoCatalogo({ color, size }: PropsIcono) {
-  return <Ionicons name="library-outline" color={color} size={size} />;
+  return <Ionicons name="library-outline" color={typeof color === 'string' ? color : undefined} size={size} />;
 }
 
 function iconoReservas({ color, size }: PropsIcono) {
-  return <Ionicons name="bookmark-outline" color={color} size={size} />;
+  return <Ionicons name="bookmark-outline" color={typeof color === 'string' ? color : undefined} size={size} />;
 }
 
 export default function LayoutPestanias() {

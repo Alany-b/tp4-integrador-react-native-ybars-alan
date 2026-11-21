@@ -50,8 +50,12 @@ export type ValorBiblioteca = {
 
 export const BibliotecaContext = createContext<ValorBiblioteca | null>(null);
 
+type EstadoNavegacion = {
+  sesionIniciada: boolean;
+};
+
 type Props = {
-  children: (valor: ValorBiblioteca) => ReactNode;
+  children: (estado: EstadoNavegacion) => ReactNode;
 };
 
 function crearId(): string {
@@ -343,5 +347,5 @@ export function BibliotecaProvider({ children }: Props) {
     return null;
   }
 
-  return <BibliotecaContext.Provider value={valor}>{children(valor)}</BibliotecaContext.Provider>;
+  return <BibliotecaContext.Provider value={valor}>{children({ sesionIniciada })}</BibliotecaContext.Provider>;
 }
