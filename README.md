@@ -131,7 +131,7 @@ En Expo Go se reemplaza `bibliotecaipf://` por `exp://IP:8081/--/`.
 
 ## Datos de prueba
 
-El catálogo tiene 17 libros en `src/data/libros.ts`. El Aleph y El túnel empiezan sin ejemplares y con una lista de espera. Cien años de soledad y La invención de Morel empiezan sin ejemplares y sin nadie esperando. Clean Code y Eloquent JavaScript tienen su ISBN real. Antes de entregar hay que cambiar dos libros por dos que tengas en casa, con el ISBN de su contratapa.
+El catálogo tiene 17 libros en `src/data/libros.ts`. El Aleph y El túnel empiezan sin ejemplares y con una lista de espera. Cien años de soledad y La invención de Morel empiezan sin ejemplares y sin nadie esperando. 1984 y El extranjero reemplazaron a Clean Code y Eloquent JavaScript, con el ISBN de la contratapa de cada uno.
 
 ## Desafíos opcionales hechos
 
@@ -142,7 +142,7 @@ El catálogo tiene 17 libros en `src/data/libros.ts`. El Aleph y El túnel empie
 
 ## Capturas
 
-Están en la carpeta `capturas`. Las de esta lista se sacaron en la versión web de la app, con tamaño de pantalla de iPhone.
+Están en la carpeta `capturas`. Las capturas 01 a 14 se sacaron en la versión web de la app, con tamaño de pantalla de iPhone. Las capturas 15 a 22 se sacaron en un iPhone 13 con Expo Go.
 
 | Archivo | Pantalla |
 |---|---|
@@ -160,8 +160,16 @@ Están en la carpeta `capturas`. Las de esta lista se sacaron en la versión web
 | `12-mostrador-antes.png` | Mostrador antes de entregar |
 | `13-mostrador-despues.png` | Mostrador después de entregar al siguiente |
 | `14-pantalla-404.png` | Pantalla 404 con la URL inexistente |
+| `15-escaner-cargando.png` | Escáner revisando el permiso de la cámara (fotograma del video de pantalla) |
+| `16-escaner-preguntable.png` | Escáner con el texto del beneficio y el botón "Usar la cámara" |
+| `17-permiso-camara-previa.png` | Pantalla previa del permiso de cámara, antes del diálogo del sistema |
+| `18-dialogo-sistema-camara.png` | Diálogo de iOS pidiendo la cámara (el texto es el de Expo Go) |
+| `19-escaner-bloqueado.png` | Cámara bloqueada, con "Abrir Ajustes" y el ingreso manual del ISBN |
+| `20-escaner-concedido.png` | Escáner con la cámara activa leyendo un código de barras |
+| `21-permiso-notificaciones-previa.png` | Pantalla previa del permiso de notificaciones |
+| `22-notificacion-recibida.png` | Banner "Recordatorio de devolución" en la pantalla de inicio |
 
-Las capturas del escáner en sus cuatro estados y de la notificación recibida se sacaron en el teléfono con Expo Go.
+Las capturas 15 a 22 dependen de los permisos de Expo Go, no de la app. Por eso se sacaron en este orden: primero la negativa de la cámara, después el permiso concedido desde Ajustes, y al final el de notificaciones.
 
 ## Salida de lint y tipos
 
